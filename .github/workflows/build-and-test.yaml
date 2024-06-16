@@ -38,7 +38,9 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/get-self-packages@v1
 
       - name: Show ccache stats before build
-        run: du -sh ${CCACHE_DIR} && ccache -s
+        run: |
+          mkdir -p ${CCACHE_DIR}
+          du -sh ${CCACHE_DIR} && ccache -s
         shell: bash
 
       # TODO: before merging, keep target-packages unchanged
