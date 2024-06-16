@@ -63,7 +63,7 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/colcon-build@v1
         with:
           rosdistro: ${{ matrix.rosdistro }}
-          target-packages: bluetooth_monitor
+          target-packages: imu_corrector
           build-depends-repos: ${{ matrix.build-depends-repos }}
 
       - name: Show ccache stats after build
