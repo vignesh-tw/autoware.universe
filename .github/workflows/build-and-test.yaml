@@ -37,10 +37,24 @@ jobs:
         id: get-self-packages
         uses: autowarefoundation/autoware-github-actions/get-self-packages@v1
 
-      - name: Show ccache stats before build
+      - name: Create ccache directory
         run: |
           mkdir -p ${CCACHE_DIR}
           du -sh ${CCACHE_DIR} && ccache -s
+        shell: bash
+
+      - name: Attempt to restore ccache
+        if: matrix.container-suffix == '-cuda'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            /root/.ccache
+          restore-keys: |
+            ccache-main-${{ runner.os }}-${{ matrix.rosdistro }}-${{ github.event.pull_request.head.sha }}
+            ccache-main-${{ runner.os }}-${{ matrix.rosdistro }}
+
+      - name: Show ccache stats before build
+        run: du -sh ${CCACHE_DIR} && ccache -s
         shell: bash
 
       # TODO: before merging, keep target-packages unchanged
@@ -59,11 +73,11 @@ jobs:
       # TODO: before merging, only run on push to main
       - name: Cache ccache
         if: matrix.container-suffix == '-cuda'
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             /root/.ccache
-          key: ccache-${{ runner.os }}-${{ matrix.rosdistro }}-${{ github.event.pull_request.head.sha }}
+          key: ccache-main-${{ runner.os }}-${{ matrix.rosdistro }}-${{ github.event.pull_request.head.sha }}
 
 #      - name: Test
 #        if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
