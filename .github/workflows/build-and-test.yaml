@@ -79,23 +79,23 @@ jobs:
             /root/.ccache
           key: ccache-main-${{ runner.os }}-${{ matrix.rosdistro }}-${{ github.event.pull_request.head.sha }}
 
-#      - name: Test
-#        if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
-#        id: test
-#        uses: autowarefoundation/autoware-github-actions/colcon-test@v1
-#        with:
-#          rosdistro: ${{ matrix.rosdistro }}
-#          target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
-#          build-depends-repos: ${{ matrix.build-depends-repos }}
-#
-#      - name: Upload coverage to CodeCov
-#        if: ${{ steps.test.outputs.coverage-report-files != '' }}
-#        uses: codecov/codecov-action@v4
-#        with:
-#          files: ${{ steps.test.outputs.coverage-report-files }}
-#          fail_ci_if_error: false
-#          verbose: true
-#          flags: total
+      #      - name: Test
+      #        if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
+      #        id: test
+      #        uses: autowarefoundation/autoware-github-actions/colcon-test@v1
+      #        with:
+      #          rosdistro: ${{ matrix.rosdistro }}
+      #          target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
+      #          build-depends-repos: ${{ matrix.build-depends-repos }}
+      #
+      #      - name: Upload coverage to CodeCov
+      #        if: ${{ steps.test.outputs.coverage-report-files != '' }}
+      #        uses: codecov/codecov-action@v4
+      #        with:
+      #          files: ${{ steps.test.outputs.coverage-report-files }}
+      #          fail_ci_if_error: false
+      #          verbose: true
+      #          flags: total
 
       - name: Show disk space after the tasks
         run: df -h
