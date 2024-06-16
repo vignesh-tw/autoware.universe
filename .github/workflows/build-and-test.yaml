@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  CC: /usr/lib/ccache/gcc
+  CXX: /usr/lib/ccache/g++
+
 jobs:
   build-and-test:
     runs-on: [self-hosted, linux, X64]
@@ -41,8 +45,6 @@ jobs:
         run: |
           mkdir -p ${CCACHE_DIR}
           du -sh ${CCACHE_DIR} && ccache -s
-          export CC="/usr/lib/ccache/gcc"
-          export CXX="/usr/lib/ccache/g++"
         shell: bash
 
       - name: Test if env vars are set
