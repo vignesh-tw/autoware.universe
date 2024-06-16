@@ -47,12 +47,6 @@ jobs:
           du -sh ${CCACHE_DIR} && ccache -s
         shell: bash
 
-      - name: Test if env vars are set
-        run: |
-          echo "CC: $CC"
-          echo "CXX: $CXX"
-        shell: bash
-
       - name: Attempt to restore ccache
         if: matrix.container-suffix == '-cuda'
         uses: actions/cache/restore@v4

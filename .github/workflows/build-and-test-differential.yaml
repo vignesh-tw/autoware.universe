@@ -8,6 +8,10 @@ on:
       - reopened
       - labeled
 
+env:
+  CC: /usr/lib/ccache/gcc
+  CXX: /usr/lib/ccache/g++
+
 jobs:
   make-sure-label-is-present:
     uses: autowarefoundation/autoware-github-actions/.github/workflows/make-sure-label-is-present.yaml@v1
