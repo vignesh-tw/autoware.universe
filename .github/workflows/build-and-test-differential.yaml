@@ -64,8 +64,8 @@ jobs:
           path: |
             /root/.ccache
           restore-keys: |
-            ccache-main-${{ runner.os }}-${{ matrix.rosdistro }}-${{ github.event.pull_request.base.sha }}
-            ccache-main-${{ runner.os }}-${{ matrix.rosdistro }}
+            ccache-main-${{ runner.arch }}-${{ matrix.rosdistro }}-${{ github.event.pull_request.base.sha }}
+            ccache-main-${{ runner.arch }}-${{ matrix.rosdistro }}
 
       - name: Show ccache stats before build
         run: du -sh ${CCACHE_DIR} && ccache -s
