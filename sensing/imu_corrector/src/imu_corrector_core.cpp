@@ -23,7 +23,7 @@
 
 #include <algorithm>
 
-// TODO: remove this line please.
+// TODO(xmfcx): remove this line please.
 
 std::array<double, 9> transformCovariance(const std::array<double, 9> & cov)
 {
