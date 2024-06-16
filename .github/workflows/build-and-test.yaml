@@ -41,6 +41,14 @@ jobs:
         run: |
           mkdir -p ${CCACHE_DIR}
           du -sh ${CCACHE_DIR} && ccache -s
+          export CC="/usr/lib/ccache/gcc"
+          export CXX="/usr/lib/ccache/g++"
+        shell: bash
+
+      - name: Test if env vars are set
+        run: |
+          echo "CC: $CC"
+          echo "CXX: $CXX"
         shell: bash
 
       - name: Attempt to restore ccache
