@@ -49,7 +49,7 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/colcon-build@v1
         with:
           rosdistro: ${{ matrix.rosdistro }}
-          target-packages: "ament_cmake ament_cmake_auto ament_cmake_core ament_cmake_export_definitions ament_cmake_export_dependencies ament_cmake_export_include_directories ament_cmake_export_interfaces ament_cmake_export_libraries ament_cmake_export_link_flags ament_cmake_export_targets ament_cmake_gen_version_h ament_cmake_gmock ament_cmake_gtest ament_cmake_include_directories ament_cmake_libraries ament_cmake_python ament_cmake_target_dependencies ament_cmake_test ament_cmake_version autoware_cmake autoware_lint_common bluetooth_monitor"
+          target-packages: bluetooth_monitor
           build-depends-repos: ${{ matrix.build-depends-repos }}
 
       - name: Show ccache stats after build
