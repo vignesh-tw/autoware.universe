@@ -71,7 +71,7 @@ jobs:
         shell: bash
 
       # TODO: before merging, only run on push to main
-      - name: Cache ccache
+      - name: Push the ccache cache
         if: matrix.container-suffix == '-cuda'
         uses: actions/cache/save@v4
         with:
