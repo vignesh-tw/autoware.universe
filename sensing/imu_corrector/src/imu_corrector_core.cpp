@@ -23,6 +23,8 @@
 
 #include <algorithm>
 
+// TODO: remove this line please.
+
 std::array<double, 9> transformCovariance(const std::array<double, 9> & cov)
 {
   using COV_IDX = tier4_autoware_utils::xyz_covariance_index::XYZ_COV_IDX;
