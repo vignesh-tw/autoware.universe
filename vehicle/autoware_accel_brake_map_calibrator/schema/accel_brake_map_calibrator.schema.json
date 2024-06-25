@@ -1,0 +1,149 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Default parameters for autoware_accel_brake_map_calibrator node",
+    "type": "object",
+    "definitions": {
+      "autoware_accel_brake_map_calibrator": {
+        "type": "object",
+        "properties": {
+          "update_hz" : {
+            "type": "number",
+            "description": "Update rate in Hz",
+            "default": 10.0
+          },
+          "initial_covariance" : {
+            "type": "number",
+            "description": "Initial covariance",
+            "default": 0.05
+          },
+          "velocity_min_threshold" : {
+            "type": "number",
+            "description": "Minimum velocity threshold",
+            "default": 0.1
+          },
+          "velocity_diff_threshold" : {
+            "type": "number",
+            "description": "Velocity difference threshold",
+            "default": 0.556
+          },
+          "pedal_diff_threshold" : {
+            "type": "number",
+            "description": "Pedal difference threshold",
+            "default": 0.03
+          },
+          "max_steer_threshold" : {
+            "type": "number",
+            "description": "Maximum steering threshold",
+            "default": 0.2
+          },
+          "max_pitch_threshold" : {
+            "type": "number",
+            "description": "Maximum pitch threshold",
+            "default": 0.02
+          },
+          "max_jerk_threshold" : {
+            "type": "number",
+            "description": "Maximum jerk threshold",
+            "default": 0.7
+          },
+          "pedal_velocity_thresh" : {
+            "type": "number",
+            "description": "Pedal velocity threshold",
+            "default": 0.15
+          },
+          "max_accel" : {
+            "type": "number",
+            "description": "Maximum acceleration",
+            "default": 5.0
+          },
+          "min_accel" : {
+            "type": "number",
+            "description": "Minimum acceleration",
+            "default": -5.0
+          },
+          "pedal_to_accel_delay" : {
+            "type": "number",
+            "description": "Pedal to acceleration delay",
+            "default": 0.3
+          },
+          "max_data_count" : {
+            "type": "integer",
+            "description": "Maximum data count",
+            "default": 200
+          },
+          "pedal_accel_graph_output" : {
+            "type": "boolean",
+            "description": "Pedal acceleration graph output",
+            "default": false
+          },
+          "progress_file_output" : {
+            "type": "boolean",
+            "description": "Progress file output",
+            "default": false
+          },
+          "precision" : {
+            "type": "integer",
+            "description": "Precision",
+            "default": 3
+          },
+          "get_pitch_method" : {
+            "type": "string",
+            "description": "Get pitch method",
+            "default": "tf"
+          },
+          "accel_brake_value_source" : {
+            "type": "string",
+            "description": "Acceleration and brake value source",
+            "default": "status"
+          },
+          "update_suggest_thresh" : {
+            "type": "number",
+            "description": "Update suggest threshold",
+            "default": 0.7
+          },
+          "csv_calibrated_map_dir" : {
+            "type": "string",
+            "description": "CSV calibrated map directory",
+            "default": ""
+          },
+          "update_method" : {
+            "type": "string",
+            "description": "Update method",
+            "default": "update_offset_cell_around"
+          },
+          "csv_default_map_dir" : {
+            "type": "string",
+            "description": "CSV default map directory",
+            "default": ""
+          },
+          "output_log_file" : {
+            "type": "string",
+            "description": "Output log file",
+            "default": ""
+          }
+        },
+        "required": ["update_hz", "initial_covariance", "velocity_min_threshold", 
+        "velocity_diff_threshold", "pedal_diff_threshold", "max_steer_threshold", 
+        "max_pitch_threshold", "max_jerk_threshold", "pedal_velocity_thresh", 
+        "max_accel", "min_accel", "pedal_to_accel_delay", "max_data_count", 
+        "pedal_accel_graph_output", "progress_file_output", "precision", 
+        "get_pitch_method", "accel_brake_value_source", "update_suggest_thresh", 
+        "csv_calibrated_map_dir", "update_method", "csv_default_map_dir", "output_log_file"],
+        "additionalProperties": false
+      }
+    },
+    "properties": {
+      "/**": {
+        "type": "object",
+        "properties": {
+          "ros__parameters": {
+            "$ref": "#/definitions/autoware_accel_brake_map_calibrator"
+          }
+        },
+        "required": ["ros__parameters"],
+        "additionalProperties": false
+      }
+    },
+    "required": ["/**"],
+    "additionalProperties": false
+  }
